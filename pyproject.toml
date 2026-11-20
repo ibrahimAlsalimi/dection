@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spell"
+version = "0.1.0"
+description = "Fast offline English spelling correction with an fzf-style terminal picker"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE", "src/spell/data/LICENSE-DATA.txt"]
+dependencies = ["prompt_toolkit>=3.0.36"]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[project.scripts]
+spell = "spell.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+spell = ["data/*.tsv", "data/*.txt"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
